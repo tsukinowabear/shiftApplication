@@ -1,0 +1,46 @@
+.header{
+    margin-top: 10px;
+}
+
+.clear{
+    clear: both;
+}
+
+h2{
+    font-size: 28px;
+    margin-left: 10px;
+}
+
+.content{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.flex{
+    display: flex;
+}
+.left{
+    float: left;
+    margin-right: 15px;
+}
+.right{
+    float: right;
+    margin-right: 15px;
+}
+.item{
+    font-size: 24px;
+    margin-left: 20px;
+    text-align: left;
+}
+.between{
+    font-size: 40px;
+    margin-left: 20px;
+    text-align: center;
+}
+button{
+    margin-right: 10px;
+    padding: 0px 10px;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 2px solid;
+}
