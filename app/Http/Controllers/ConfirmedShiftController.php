@@ -6,53 +6,84 @@ use Illuminate\Http\Request;
 use App\Models\DesiredShift;
 use App\Models\ConfirmedShift;
 use App\Models\WorkedShift;
+use App\Models\ConfirmedDesired;
+use App\Models\ConfirmedWorked;
+use App\Models\Role;
 
 class ConfirmedShiftController extends Controller
 {
-    public function desire(DesiredShift $desire)
+    public function index(ConfirmedShift $confirm)
     {
-        return view('shifts/desire')->with(['shifts' => $desire->getByLimit()]);
+        return view('shifts/confirm/index')->with(['shifts' => $confirm->getByLimit()]);
     }
     
-    public function apply()
+    public function select(DesiredShift $desired)
     {
-        return view('shifts/apply');
+        return view('shifts/confirm/desired')->with(['shifts' => $desired->getByLimit()]);
     }
     
-    public function store(Request $request, DesiredShift $desire)
+    public function create(Role $role)
+    {
+        return view('shifts/confirm/create')->with(['roles' => $role->get()]);
+    }
+    
+    public function candidate(DesiredShift $desired, Role $role, $id)
+    {
+        $table_data = $desired->find($id);
+        
+        return view('shifts/confirm/show')->with(['shift' => $table_data, 'roles' => $role->get()]);
+    }
+    
+    public function decision(DesiredShift $desired, $id)
+    {
+        $table_data = $desired->find($id);
+        
+        return view('shifts/confirm/decision')->with(['shift' => $table_data]);
+    }
+    
+    public function create_store(Request $request, ConfirmedShift $confirm)
     {
         $input = $request['post'];
-        $desire->fill($input)->save();
-        return redirect('/shifts/desire');
+        $confirm->fill($input)->save();
+        return redirect('/shifts/confirm');
     }
     
-    public function show(DesiredShift $desire, $id)
-    {
-        $table_data = $desire->find($id);
-        
-        return view('shifts/show')->with(['shift' => $table_data]);
-    }
-    
-    public function edit(DesiredShift $desire, $id)
-    {
-        $table_data = $desire->find($id);
-        
-        return view('shifts/edit')->with(['shift' => $table_data]);
-    }
-    
-    public function update(Request $request, DesiredShift $desire)
+    public function candidate_store(Request $request, ConfirmedShift $confirm, $id)
     {
         $input = $request['post'];
-        $desire->fill($input)->save();
-        
-        return redirect('/shifts/desire');
+        $confirm->fill($input)->save();
+        return redirect('/shifts/confirm');
     }
     
-    public function delete(DesiredShift $desire, $id)
+    public function show(ConfirmedShift $confirm, $id)
     {
-        $shift = $desire->find($id);
+        $table_data = $confirm->find($id);
+        
+        return view('shifts/confirm/show')->with(['shift' => $table_data]);
+    }
+    
+    public function edit(ConfirmedShift $confirm, Role $role, $id)
+    {
+        $table_data = $confirm->find($id);
+        
+        return view('shifts//confirm/edit')->with(['shift' => $table_data, 'roles' => $role->get()]);
+    }
+    
+    public function update(Request $request, ConfirmedShift $confirm, $id)
+    {
+        $table_data = $confirm->find($id);
+
+        $input = $request['post'];
+        $table_data->fill($input)->save();
+        
+        return redirect('/shifts/confirm');
+    }
+    
+    public function delete(ConfirmedShift $confirm, $id)
+    {
+        $shift = $confirm->find($id);
         
         $shift->delete();
-        return redirect('/shifts/desire');
+        return redirect('/shifts/confirm');
     }
 }

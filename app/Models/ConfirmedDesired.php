@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WorkedShift extends Model
+class ConfirmedDesired extends Model
 {
     use HasFactory;
     use SoftDeletes;
     
-    protected $table = 'worked_shifts';
+    protected $table = 'confirmed_desired';
     
     protected $fillable = [
-        'date',
-        'start',
-        'finish'
-    ];
+        'confirmed_id',
+        'desired_id',
+    ]
 }

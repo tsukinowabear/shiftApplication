@@ -10,10 +10,10 @@
         </header>
         <body>
             <div class='header'>
-                <h2 class="left">希望シフト一覧</h2>
+                <h2 class="left">希望シフト詳細</h2>
                 <div class="button">
-                    <button type='button' class="right" onclick="location.href='/'">シフト一覧</button>
-                    <button type='button' class="right" onclick="location.href='/shifts/desire'">希望シフト一覧</button>
+                    <button type='button' class="right" onclick="location.href='/shifts/comfirm'">シフト一覧</button>
+                    <button type='button' class="right" onclick="location.href='/shifts/desired'">希望シフト一覧</button>
                 </div>
             </div>
             <div class="body clear">
@@ -39,8 +39,8 @@
                     </div>
                 </div>
                     <div class="fotter clear right">
-                        <button type='button' onclick="location.href='/shifts/desire/{{ $shift->id }}/edit'">編集</button>
-                        <button type='button' onclick="location.href='/shifts/desire'">戻る</button>
+                        <button type='button' onclick="location.href='/shifts/desired/{{ $shift->id }}/edit'">編集</button>
+                        <button type='button' onclick="location.href='/shifts/desired'">戻る</button>
                     </div>
                 </form>
             </div>

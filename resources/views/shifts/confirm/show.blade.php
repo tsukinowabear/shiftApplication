@@ -10,14 +10,13 @@
         </header>
         <body>
             <div class='header'>
-                <h2 class="left">希望シフト編集</h2>
+                <h2 class="left">シフト詳細</h2>
                 <div class="button">
                     <button type='button' class="right" onclick="location.href='/shifts/comfirm'">シフト一覧</button>
                     <button type='button' class="right" onclick="location.href='/shifts/desired'">希望シフト一覧</button>
                 </div>
             </div>
             <div class="body clear">
-                <p><編集前></p>
                 <div class="content left">
                     <div class="store flex">
                         <p class='item company'>○○株式会社</p>
@@ -37,36 +36,15 @@
                             <p class="item">退勤時間</p>
                             <p class="item finish">{{ $shift->finish }}</p>
                         </div>
+                        <div class="Role">
+                            <p class="item">仕事</p>
+                            <p class='item role'>{{ $shift->role->name }}</p>
+                        </div>
                     </div>
                 </div>
-                <form action="/shifts/desired/{{ $shift->id }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="content clear left">
-                        <p><編集後></p>
-                        <div class="store flex">
-                            <p class='item company'>○○株式会社</p>
-                            <p class='item store'>×× □□店</p>
-                        </div>
-                        <div class="shift flex">
-                            <div class="date">
-                                <p class="item">日付</p>
-                                <input type="date" class="item" name="post[date]" value="{{ $shift->date }}"/>
-                            </div>
-                            <div class="start">
-                                <p class="item">出勤時間</p>
-                                <input  type="time" class="item" name="post[start]" value="{{ $shift->start }}"/>
-                            </div>
-                            <p class="between">~</p>
-                            <div class="finish">
-                                <p class="item">退勤時間</p>
-                                <input  type="time" class="item" name="post[finish]" value="{{ $shift->finish }}"/>
-                            </div>
-                        </div>
-                    </div>
                     <div class="fotter clear right">
-                        <button type="submit" class="">更新</button>
-                        <button type='button' class="" onclick="location.href='/shifts/desired'">戻る</button>
+                        <button type='button' onclick="location.href='/shifts/confirm/{{ $shift->id }}/edit'">編集</button>
+                        <button type='button' onclick="location.href='/shifts/confirm'">戻る</button>
                     </div>
                 </form>
             </div>

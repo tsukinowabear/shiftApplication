@@ -10,14 +10,14 @@
         </header>
         <body>
             <div class='header'>
-                <h2 class="left">希望シフト一覧</h2>
+                <h2 class="left">希望シフト申請</h2>
                 <div class="button">
-                    <button type='button' class="right" onclick="location.href='/'">シフト一覧</button>
-                    <button type='button' class="right" onclick="location.href='/shifts/desire'">希望シフト一覧</button>
+                    <button type='button' class="right" onclick="location.href='/shifts/comfirm'">シフト一覧</button>
+                    <button type='button' class="right" onclick="location.href='/shifts/desired'">希望シフト一覧</button>
                 </div>
             </div>
             <div class="body clear">
-                <form action="/shifts/desire" method="POST">
+                <form action="/shifts/desired" method="POST">
                     @csrf
                     <div class="content left">
                         <div class="store flex">
@@ -42,7 +42,7 @@
                     </div>
                     <div class="fotter clear right">
                         <button type="submit" class="">申請</button>
-                        <button type='button' class="" onclick="location.href='/shifts/desire'">戻る</button>
+                        <button type='button' class="" onclick="location.href='/shifts/desired'">戻る</button>
                     </div>
                 </form>
             </div>

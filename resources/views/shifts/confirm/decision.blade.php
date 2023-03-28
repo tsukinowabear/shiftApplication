@@ -10,7 +10,7 @@
         </header>
         <body>
             <div class='header'>
-                <h2 class="left">希望シフト編集</h2>
+                <h2 class="left">希望シフト一覧</h2>
                 <div class="button">
                     <button type='button' class="right" onclick="location.href='/shifts/comfirm'">シフト一覧</button>
                     <button type='button' class="right" onclick="location.href='/shifts/desired'">希望シフト一覧</button>

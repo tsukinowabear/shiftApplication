@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\DesiredShiftController;
 use App\Http\Controllers\ConfirmedShiftController;
 use Illuminate\Support\Facades\Route;
@@ -25,23 +26,27 @@ Route::controller(ShiftController::class)->middleware(['auth'])->group(function(
 });
 
 Route::controller(DesiredShiftController::class)->middleware(['auth'])->group(function(){
-    Route::get('/shifts/desire','desire')->name('desire');
-    Route::get('/shifts/desire/create','apply')->name('apply');
-    Route::get('/shifts/desire/{shift}','show')->name('show');
-    Route::get('/shifts/desire/{shift}/edit','edit')->name('edit');
-    Route::put('/shifts/desire/{shift}','update')->name('update');
-    Route::post('/shifts/desire','store')->name('store');
-    Route::delete('/shifts/desire/{shift}','delete')->name('delete');
+    Route::get('/shifts/desired','index')->name('desired');
+    Route::get('/shifts/desired/create','apply')->name('apply');
+    Route::get('/shifts/desired/{shift}','show')->name('show');
+    Route::get('/shifts/desired/{shift}/edit','edit')->name('edit');
+    Route::put('/shifts/desired/{shift}','update')->name('update');
+    Route::post('/shifts/desired','store')->name('store');
+    Route::delete('/shifts/desired/{shift}','delete')->name('delete');
 });
 
 Route::controller(ConfirmedShiftController::class)->middleware(['auth'])->group(function(){
-    Route::get('/shifts/confirm','confirm')->name('confirm');
-    Route::get('/shifts/desire/create','apply')->name('apply');
-    Route::get('/shifts/desire/{shift}','show')->name('show');
-    Route::get('/shifts/desire/{shift}/edit','edit')->name('edit');
-    Route::put('/shifts/desire/{shift}','update')->name('update');
-    Route::post('/shifts/desire','store')->name('store');
-    Route::delete('/shifts/desire/{shift}','delete')->name('delete');
+    Route::get('/shifts/confirm','index')->name('confirm');
+    Route::get('/shifts/confirm/desired','select')->name('select');
+    Route::get('/shifts/confirm/create','create')->name('create');
+    Route::get('/shifts/confirm/desired/{shift}','candidate')->name('candidate');
+    Route::get('/shifts/confirm/desired/{shift}/create','decision')->name('decision');
+    Route::get('/shifts/confirm/{shift}','show')->name('show');
+    Route::get('/shifts/confirm/{shift}/edit','edit')->name('edit');
+    Route::put('/shifts/confirm/{shift}','update')->name('update');
+    Route::post('/shifts/confirm','create_store')->name('create_store');
+    Route::post('/shifts/confirm{shift}','candidate_store')->name('candidate_store');
+    Route::delete('/shifts/confirm/{shift}','delete')->name('delete');
 });
 
 Route::middleware('auth')->group(function () {

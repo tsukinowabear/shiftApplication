@@ -15,7 +15,7 @@
             <div class='header'>
                 <h2 class="left">希望シフト一覧</h2>
                 <div class="button">
-                    <button type='button' class="right" onclick="location.href='/'">シフト一覧</button>
+                    <button type='button' class="right" onclick="location.href='/shifts/confirm'">シフト一覧</button>
                 </div>
             </div>
             <div class='body clear'>
@@ -33,10 +33,10 @@
                         </div>
                     </div>
                     <div class='right'>
-                        <button type='button' onclick="location.href='/shifts/desire/{{ $shift->id }}'">詳細</button>
-                        <button type='button' onclick="location.href='/shifts/desire/{{ $shift->id }}/edit'">編集</button>
+                        <button type='button' onclick="location.href='/shifts/desired/{{ $shift->id }}'">詳細</button>
+                        <button type='button' onclick="location.href='/shifts/desired/{{ $shift->id }}/edit'">編集</button>
                         
-                        <form action="/shifts/desire/{{ $shift->id }}" id="form_{{ $shift->id }}" method="post">
+                        <form action="/shifts/desired/{{ $shift->id }}" id="form_{{ $shift->id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type='button' onclick="deleteShift({{ $shift->id }})">削除</button>
@@ -45,8 +45,8 @@
                 @endforeach
             </div>
             <div class='fotter clear right'>
-                <button type='button' onclick="location.href='/shifts/desire/create'">シフト申請</button>
-                <button type='button' onclick="location.href='/">戻る</button>
+                <button type='button' onclick="location.href='/shifts/desired/create'">シフト申請</button>
+                <button type='button' onclick="location.href='/'">戻る</button>
             </div>
             <script>
                 function deleteShift(id) {
