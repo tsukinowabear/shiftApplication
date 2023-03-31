@@ -15,5 +15,5 @@ class ConfirmedWorked extends Model
     protected $fillable = [
         'confirmed_id',
         'worked_id',
-    ]
+    ];
 }

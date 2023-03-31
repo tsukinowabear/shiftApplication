@@ -39,42 +39,10 @@
                         </div>
                     </div>
                 </div>
-                <form action="/shifts/confirm/{{ $shift->id }}" method="POST">
-                    @csrf
-                    <div class="content clear left">
-                        <p><シフト></p>
-                        <div class="store flex">
-                            <p class='item company'>○○株式会社</p>
-                            <p class='item store'>×× □□店</p>
-                        </div>
-                        <div class="shift flex">
-                            <div class="date">
-                                <p class="item">日付</p>
-                                <input type="date" class="item" name="post[date]" value="{{ $shift->date }}"/>
-                            </div>
-                            <div class="start">
-                                <p class="item">出勤時間</p>
-                                <input  type="time" class="item" name="post[start]" value="{{ $shift->start }}"/>
-                            </div>
-                            <p class="between">~</p>
-                            <div class="finish">
-                                <p class="item">退勤時間</p>
-                                <input  type="time" class="item" name="post[finish]" value="{{ $shift->finish }}"/>
-                            </div>
-                            <div class="Role">
-                                <p class="item">仕事</p>
-                                <select name="post[role_id]" class="item">
-                                    @foreach($roles as $role)
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fotter clear right">
-                        <button type="submit" class="">更新</button>
-                        <button type='button' class="" onclick="location.href='/shifts/confirm/desired'">戻る</button>
-                    </div>
+                <div class="fotter clear right">
+                    <button type='button' class="" onclick="location.href='/shifts/confirm/{{ $shift->id }}/create'">シフト作成</button>
+                    <button type='button' class="" onclick="location.href='/shifts/confirm/desired'">戻る</button>
+                </div>
                 </form>
             </div>
         </body>

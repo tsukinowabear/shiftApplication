@@ -45,7 +45,7 @@ Route::controller(ConfirmedShiftController::class)->middleware(['auth'])->group(
     Route::get('/shifts/confirm/{shift}/edit','edit')->name('edit');
     Route::put('/shifts/confirm/{shift}','update')->name('update');
     Route::post('/shifts/confirm','create_store')->name('create_store');
-    Route::post('/shifts/confirm{shift}','candidate_store')->name('candidate_store');
+    Route::post('/shifts/confirm/{shift}','candidate_store')->name('candidate_store');
     Route::delete('/shifts/confirm/{shift}','delete')->name('delete');
 });
 
