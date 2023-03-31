@@ -15,5 +15,5 @@ class ConfirmedDesired extends Model
     protected $fillable = [
         'confirmed_id',
         'desired_id',
-    ]
+    ];
 }

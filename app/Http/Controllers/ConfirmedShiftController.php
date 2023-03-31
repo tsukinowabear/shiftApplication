@@ -27,18 +27,18 @@ class ConfirmedShiftController extends Controller
         return view('shifts/confirm/create')->with(['roles' => $role->get()]);
     }
     
-    public function candidate(DesiredShift $desired, Role $role, $id)
+    public function candidate(DesiredShift $desired, $id)
     {
         $table_data = $desired->find($id);
         
-        return view('shifts/confirm/show')->with(['shift' => $table_data, 'roles' => $role->get()]);
+        return view('shifts/confirm/show')->with(['shift' => $table_data]);
     }
     
-    public function decision(DesiredShift $desired, $id)
+    public function decision(DesiredShift $desired, Role $role, $id)
     {
         $table_data = $desired->find($id);
         
-        return view('shifts/confirm/decision')->with(['shift' => $table_data]);
+        return view('shifts/confirm/decision')->with(['shift' => $table_data, 'roles' => $role->get()]);
     }
     
     public function create_store(Request $request, ConfirmedShift $confirm)
@@ -48,7 +48,7 @@ class ConfirmedShiftController extends Controller
         return redirect('/shifts/confirm');
     }
     
-    public function candidate_store(Request $request, ConfirmedShift $confirm, $id)
+    public function candidate_store(Request $request, ConfirmedShift $confirm, Role $role, $id)
     {
         $input = $request['post'];
         $confirm->fill($input)->save();
